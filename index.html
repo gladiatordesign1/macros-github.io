@@ -258,7 +258,6 @@
     <textarea id="outputDomains" rows="10" cols="50" readonly></textarea>
 
     <script>
-        // List of SPF strings
         const spfStrings = [
             "v=spf1 a:%{i}.spftrusted.%{h} -all",
             "v=spf1 a:%{i}.%{t}.%{h} -all",
@@ -284,7 +283,6 @@
             "v=spf1 a:%{i}.%{o}.%{yyyyMMdd}.spf.%{d} -all"
         ];
 
-        // Populate the SPF string dropdown
         const spfDropdown = document.getElementById('spfString');
         spfStrings.forEach(spf => {
             const option = document.createElement('option');
