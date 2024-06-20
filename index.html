@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-           color: white;
+            color: white;
             background-color: #212121;
             padding: 10px 550px;
         }
@@ -64,18 +64,14 @@
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
-           border: 1px #2196F3 solid;
+            border: 1px #2196F3 solid;
             border-radius: 4px;
             background-color: #444;
             color: #eee;
             resize: vertical;
         }
-		
-		
-		
-		
-		
-		       .pushable {
+
+        .pushable {
             position: relative;
             background: transparent;
             margin: 10px;
@@ -160,9 +156,6 @@
         .pushable:focus:not(:focus-visible) {
             outline: none;
         }
-		
-		
-		
     </style>
 </head>
 <body>
@@ -170,7 +163,7 @@
     <label for="domains">Enter domains (one per line):</label><br>
     <textarea id="domains" rows="10" cols="30"></textarea><br>
 
-    <label for="prefix">Subdomain:</label><br>
+    <label for="prefix">Subdomain: for randoms: r(2,5,l) or r(2,5,ln)</label><br>
     <input type="text" id="prefix"><br>
 
     <div class="checkbox-container">
@@ -186,16 +179,14 @@
         <label for="customSPFString">Custom SPF Syntax:</label><br>
         <input type="text" id="customSPFString"><br>
     </div>
-<center>
-	<button onclick="modifyDomains()" class="pushable">
-        <span class="shadow"></span>
-        <span class="edge"></span>
-        <span class="front">
-           Generate
-        </span>
-    </button>
-	</center>
-	</br>
+    <center>
+        <button onclick="modifyDomains()" class="pushable">
+            <span class="shadow"></span>
+            <span class="edge"></span>
+            <span class="front">Generate</span>
+        </button>
+    </center>
+    <br>
     <label for="output">Output with SPF Syntax:</label><br>
     <textarea id="output" rows="10" readonly></textarea><br>
 
@@ -250,9 +241,37 @@
             }
         });
 
+        function generateRandomString(length, chars) {
+            let result = '';
+            const characters = {
+                'l': 'abcdefghijklmnopqrstuvwxyz',
+                'n': '0123456789',
+                'ln': 'abcdefghijklmnopqrstuvwxyz0123456789'
+            };
+            const characterSet = characters[chars];
+            const charactersLength = characterSet.length;
+            for (let i = 0; i < length; i++) {
+                result += characterSet.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+
+        function parseRandomInput(input) {
+            const regex = /^r\((\d+),(\d+),([ln]+)\)$/;
+            const match = input.match(regex);
+            if (match) {
+                const minLength = parseInt(match[1]);
+                const maxLength = parseInt(match[2]);
+                const chars = match[3];
+                const length = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
+                return generateRandomString(length, chars);
+            }
+            return input;
+        }
+
         function modifyDomains() {
             const domains = document.getElementById('domains').value.split('\n');
-            const prefix = document.getElementById('prefix').value;
+            const prefixInput = document.getElementById('prefix').value;
             let spfString = '';
 
             if (customSPFCheckbox.checked) {
@@ -266,6 +285,7 @@
 
             domains.forEach(domain => {
                 if (domain.trim()) {
+                    const prefix = parseRandomInput(prefixInput); // Generate unique random prefix for each domain
                     const combinedDomain = `${prefix}.${domain.trim()}`;
                     output += `${combinedDomain},${spfString}\n`;
                     outputDomains += `${combinedDomain}\n`;
