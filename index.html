@@ -195,28 +195,28 @@
 
     <script>
         const spfStrings = [
-            "v=spf1 a:%{i}.spftrusted.%{h} -all",
-            "v=spf1 a:%{i}.%{t}.%{h} -all",
-            "v=spf1 a:%{i}.trusted.%{h} -all",
+            "v=spf1 a:%{i}.spftrusted.%{h} ?all",
+            "v=spf1 a:%{i}.%{t}.%{h} ?all",
+            "v=spf1 a:%{i}.trusted.%{h} ?all",
             "v=spf1 exists:%{ir}.%{v}.spf.%{d} ?all",
-            "v=spf1 a:%{i}.%{yyyyMMdd}.sub.%{d} -all",
-            "v=spf1 a:%{i}.sub.%{o} -all",
-            "v=spf1 a:%{i}.%{l}.%{h} -all",
-            "v=spf1 a:%{i}.%{or}.trusted.%{d} -all",
-            "v=spf1 a:%{i}.%{l}.%{dd}.trusted.%{d} -all",
-            "v=spf1 a:%{i}.%{l}.trusted.%{d} -all",
-            "v=spf1 a:%{i}.%{l}.rev.%{ho}.%{d} -all",
-            "v=spf1 a:%{i}.rev.%{ho}.org.%{o} -all",
-            "v=spf1 a:%{i}.spf.%{o}.%{h} -all",
-            "v=spf1 a:%{i}.%{l}._spf.%{d} -all",
+            "v=spf1 a:%{i}.%{yyyyMMdd}.sub.%{d} ?all",
+            "v=spf1 a:%{i}.sub.%{o} ?all",
+            "v=spf1 a:%{i}.%{l}.%{h} ?all",
+            "v=spf1 a:%{i}.%{or}.trusted.%{d} ?all",
+            "v=spf1 a:%{i}.%{l}.%{dd}.trusted.%{d} ?all",
+            "v=spf1 a:%{i}.%{l}.trusted.%{d} ?all",
+            "v=spf1 a:%{i}.%{l}.rev.%{ho}.%{d} ?all",
+            "v=spf1 a:%{i}.rev.%{ho}.org.%{o} ?all",
+            "v=spf1 a:%{i}.spf.%{o}.%{h} ?all",
+            "v=spf1 a:%{i}.%{l}._spf.%{d} ?all",
             "v=spf1 exists:%{ir}.v=%{v}.spf.%{d} ?all",
-            "v=spf1 a:%{i}.%{l}.%{yyyy}.spf.%{d} -all",
-            "v=spf1 a:%{i}.%{or}.spf.%{d} -all",
-            "v=spf1 a:%{i}.%{o}.%{mm}.spf.%{d} -all",
-            "v=spf1 a:%{i}.%{t}.rev.%{ho}.spf.%{d} -all",
-            "v=spf1 a:%{i}.%{o}.%{t}.spf.%{d} -all",
-            "v=spf1 a:%{i}.%{or}.%{yyyy}.spf.%{d} -all",
-            "v=spf1 a:%{i}.%{o}.%{yyyyMMdd}.spf.%{d} -all"
+            "v=spf1 a:%{i}.%{l}.%{yyyy}.spf.%{d} ?all",
+            "v=spf1 a:%{i}.%{or}.spf.%{d} ?all",
+            "v=spf1 a:%{i}.%{o}.%{mm}.spf.%{d} ?all",
+            "v=spf1 a:%{i}.%{t}.rev.%{ho}.spf.%{d} ?all",
+            "v=spf1 a:%{i}.%{o}.%{t}.spf.%{d} ?all",
+            "v=spf1 a:%{i}.%{or}.%{yyyy}.spf.%{d} ?all",
+            "v=spf1 a:%{i}.%{o}.%{yyyyMMdd}.spf.%{d} ?all"
         ];
 
         const spfDropdown = document.getElementById('spfString');
