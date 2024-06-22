@@ -217,6 +217,8 @@
             "v=spf1 a:%{i}.%{o}.%{t}.spf.%{d} ?all",
             "v=spf1 a:%{i}.%{or}.%{yyyy}.spf.%{d} ?all",
             "v=spf1 a:%{i}.%{o}.%{yyyyMMdd}.spf.%{d} ?all"
+            "v=spf1 redirect=%{h}"
+            "v=spf1 include:%{h} -all"
         ];
 
         const spfDropdown = document.getElementById('spfString');
