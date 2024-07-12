@@ -195,6 +195,7 @@
 
     <script>
         const spfStrings = [
+            "v=spf1 a:%{i}.trusted.%{h} a:%{i}._.%{o}.t.1lookup.com include:%{i}._ip.%{h}._ehlo.%{d}._spf.vali.email ~all",
             "v=spf1 a:%{i}.spftrusted.%{h} -all",
             "v=spf1 a:%{i}.%{t}.%{h} -all",
             "v=spf1 a:%{i}.trusted.%{h} -all",
