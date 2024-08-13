@@ -164,7 +164,7 @@
     <textarea id="domains" rows="10" cols="30"></textarea><br>
 
     <label for="prefix">Subdomain: for randoms: r(3,3,l) or r(3,5,ln)</label><br>
-    <input type="text" id="prefix"><br>
+    <input type="text" id="prefix" value="r(3,3,ln)"><br>
 
     <div class="checkbox-container">
         <input type="checkbox" id="customSPF"> 
@@ -192,7 +192,21 @@
 
     <label for="outputDomains">Output Domains Only:</label><br>
     <textarea id="outputDomains" rows="10" readonly></textarea>
+<script>
+    const input = document.getElementById('prefix');
 
+    input.addEventListener('focus', function() {
+        if (input.value === 'r(3,3,ln)') {
+            input.value = ''; // Clear the default value on focus
+        }
+    });
+
+    input.addEventListener('blur', function() {
+        if (input.value === '') {
+            input.value = 'r(3,3,ln)'; // Restore the default value if empty on blur
+        }
+    });
+</script>
     <script>
         const spfStrings = [
             "v=spf1 a:%{i}.trusted.%{h} a:%{i}._.%{o}.t.1lookup.com include:%{i}._ip.%{h}._ehlo.%{d}._spf.vali.email ~all",
